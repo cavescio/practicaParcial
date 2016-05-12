@@ -1,0 +1,57 @@
+  <div class="container">
+		<div class="page-header">
+			<center><h1>ABM - PHP - Angular</h1> </center>     
+		</div>
+	  	 
+		           
+					<div class="CajaInicio animated bounceInRight">
+							
+							<h1>Listado de mascotas</h1>
+							<!-- id="listaMascotas" -->
+								<input type="search" ng-model="q" placeholder="buscar mascota.." aria-label="buscar mascota" />
+							
+								<table class='example-animate-container table table-hover table-responsive' id="listaMascotas">
+									<thead>
+										<tr>
+											<th>  Foto   </th>				
+											<th>  Nombre     </th>
+											<th>  Edad   </th>
+											<th>  Fecha        </th>
+											<th>  Tipo   </th>
+											<th>  Sexo   </th>
+											<th>  BORRAR     </th>
+											<th>  MODIFICAR  </th>
+										</tr> 
+									</thead>
+									<tbody>
+										
+									<tr  class="animate-repeat" ng-repeat="mascota in ListadoMascotas| filter:q as results">
+
+										<td><img  class='fotoGrilla' ng-src="fotos/{{mascota.foto}}" /></td>
+							
+										<td>{{mascota.nombre}}</td>
+										<td>{{mascota.edad}}</td>
+										<td>{{mascota.fecha}}</td>
+										<td>{{mascota.tipo}}</td>
+										<td>{{mascota.sexo}}</td>
+
+										<td><button class='btn btn-danger' name='Borrar' ng-click="Borrar(mascota)">   <span class='glyphicon glyphicon-remove-circle'>&nbsp;</span>Borrar</button></td>
+										
+										<td><button class='btn btn-warning' name='Modificar'  ui-sref="modificar({id:mascota.id, nombre:mascota.nombre, edad:mascota.edad, fecha:mascota.fecha, tipo:mascota.tipo, sexo:mascota.sexo, foto:mascota.foto})" ><span class='glyphicon glyphicon-edit'>&nbsp;</span>Modificar</button></td>
+															
+									</tr>
+									<tr class="animate-repeat" ng-if="results.length == 0">
+										<td></td>						
+										<td> <strong>no hay mascotas con ese dato...</strong></td>
+										<td></td>
+										<td></td>
+										<td></td>										
+										<td></td>								     
+								    </tr>
+									
+								    <tbody>
+								</table>
+							</div>
+														
+						</div>
+		</div>
